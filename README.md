@@ -26,7 +26,8 @@ Bây giờ chúng ta sẽ vào chi tiết các thư mục.
     > kiến trúc **Mobx** : thì đây sẽ là nơi chứa các store và common store
 
 ## Đối với Folder **feature**:
-![Philadelphia's Magic Gardens. This place was so cool!](/src/app/assets/cap2.png "ft folder")
+![Philadelphia's Magic Gardens. This place was so cool!](/src/app/assets/cap2.PNG "ft folder")
+
 Đối với folder này bạn có thể hình dung là folder sẽ chứa các thành phần tổng quát của trang web. Trong các thành tổng quát này sẽ chứa các trang nhỏ hơn ( có mối quan hệ với nhau ).
 
 *ví dụ :*
