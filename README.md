@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Cấu trúc thư mục ( option ) cho các Project ReactJs collab Reudx-toolkit or Mobx
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project này dựa trên [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Cấu trúc Src (Source)
+( ở đây mình sẽ bao gồm 3 phần chính )
+- index.js : là file chạy chính của phần src.
+- app : là folder chứa các thư mục cấu hình chính như : gọi api, component dùng chung, thông báo, store (redux or mobx), ...
+- features : là folder chứa các thành phần chính ( features ) của trang web 1 cách tổng quát ( có thể dùng dynamic routers với react router dom , mình sẽ nói cụ thể trong phần sau ).
 
-In the project directory, you can run:
+Bây giờ chúng ta sẽ vào chi tiết các thư mục.
 
-### `yarn start`
+## Đối với Folder **app**
+![Philadelphia's Magic Gardens. This place was so cool!](/src/app/assets/Capture.png "app folder")
+ - api : chứa các file gọi đến các API services ( thường thì dựa trên axios ). Nếu bạn có tính năng **real-time** thì file lắng nghe từ server cũng nằm trong đây.
+ - assets : chứa các hình ảnh.
+ - common : chứa các components dùng chung có thể tái sử dụng nhiều lần ( components này có thể là normal components hoặc form components ).
+ - helper : chứa các folder giúp bạn xử lý các tính toán, convert date sang string, ... ( nói chung là các hàm các bạn tự định nghĩa để giúp đỡ các bạn trong các việc thao tác với dữ liệu ).
+ - layout : chứa phần chính là App.js ( Component tổng ) và index.css (css dùng chung ).
+ - notification : chứa các hàm thông báo - thường sẽ dùng chung với React Toastify.
+ - routers : chứa các định nghĩa routers trong app của bạn . Ngoài ra còn có các private router components hoặc auth router components ( đối với các việc cần đến Authentication hoặc Authorization ).
+ - store : 
+    Nếu bạn sửa dụng :
+    > Kiến trúc **Redux-toolkit**  : thì đây sẽ là nơi file của compile reducer
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    > kiến trúc **Mobx** : thì đây sẽ là nơi chứa các store và common store
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Đối với Folder **feature**:
+![Philadelphia's Magic Gardens. This place was so cool!](/src/app/assets/cap2.png "ft folder")
+Đối với folder này bạn có thể hình dung là folder sẽ chứa các thành phần tổng quát của trang web. Trong các thành tổng quát này sẽ chứa các trang nhỏ hơn ( có mối quan hệ với nhau ).
 
-### `yarn test`
+*ví dụ :*
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Feature Product** : thì sẽ chứa các trang như 
 
-### `yarn build`
+    - danh sách sản phẩm ( list )
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    - chi tiết sản phẩm ( detail )
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    - ...
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Một feature thường sẽ chứa các thành phần :
 
-### `yarn eject`
+> Nếu bạn dùng chung với **Redux-toolkit**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+ - actions : chứa các async action ( thường đây sẽ là các hàm gọi API trong folder app/api kèm theo dispatch 1 action )
+ - components : chứa các components dùng chung hoặc riêng cho 1 page.
+ - pages : các trang chính của 1 feature như mình đã kể trên.
+ - index.jsx : thường dùng để làm re-router lại các page dựa trên URL ( router components - dynamic router )
+ - ....Slice : bạn nào dùng nhiều redux toolkit chắc cũng không lạ gì với file này :D . file tách các action và reducer
+ - styles.css : file css của index.jsx
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ > Nếu bạn dùng chung với **Mobx**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+ - components : chứa các components dùng chung hoặc riêng cho 1 page.
+ - pages : các trang chính của 1 feature như mình đã kể trên.
+ - index.jsx : thường dùng để làm re-router lại các page dựa trên URL ( router components )
+ - styles.css : file css của index.jsx
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Lời kết
 
-## Learn More
+> Đây là 1 trong nhưng options của mình về struct folder của 1 project về reactjs. Bạn hoàn toàn có thể dùng những các structer khác nếu bạn cảm thấy phù hợp với project hiện tại của bạn ^^
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> Cảm ơn các bạn đã đọc bài viết của mình.
